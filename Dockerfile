@@ -11,16 +11,17 @@ RUN mkdir -p /var/run/sshd
 RUN apt-get install -y apache2
 RUN mkdir -p /var/lock/apache2 /var/run/apache2
 
-RUN apt-get install -y python python-django python-pip libapache2-mod-passenger 
-RUN apt-get install -y libapache2-mod-wsgi
+RUN apt-get install -y python python-pip libapache2-mod-uwsgi build-essential git python-dev python-setuptools sqlite3 supervisor uwsgi uwsgi-plugin-python
+RUN apt-get install -y libapache2-mod-uwsgi
+RUN pip install uwsgi
 RUN a2enmod rewrite
-RUN a2enmod passenger
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY config /config
 COPY sudoers /etc/sudoers
 
+ADD uwsgi.ini /opt/uwsgi/uwsgi.ini
 ADD run.sh /run.sh
 RUN chmod 755 /*.sh
 
