@@ -23,6 +23,7 @@ COPY sudoers /etc/sudoers
 
 ADD uwsgi.ini /opt/uwsgi/uwsgi.ini
 ADD run.sh /run.sh
+ADD startup.sh /startup.sh
 RUN chmod 755 /*.sh
 
 EXPOSE 22 80
