@@ -11,7 +11,7 @@ RUN mkdir -p /var/run/sshd
 RUN apt-get install -y apache2
 RUN mkdir -p /var/lock/apache2 /var/run/apache2
 
-RUN apt-get install -y python python-pip libapache2-mod-uwsgi build-essential git python-dev python-setuptools sqlite3 supervisor uwsgi uwsgi-plugin-python
+RUN apt-get install -y python python-pip libapache2-mod-uwsgi build-essential git python-dev python-setuptools sqlite3 supervisor uwsgi uwsgi-plugin-python libpq-dev libmysqlclient-dev
 RUN apt-get install -y libapache2-mod-uwsgi
 RUN pip install uwsgi
 RUN a2enmod rewrite
