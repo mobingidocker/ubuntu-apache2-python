@@ -13,7 +13,8 @@ RUN mkdir -p /var/lock/apache2 /var/run/apache2
 
 RUN apt-get install -y libapache2-mod-uwsgi build-essential git sqlite3 supervisor libpq-dev libmysqlclient-dev postgresql mysql-client
 RUN apt-get install -y python python-pip python-dev python-setuptools uwsgi-plugin-python
-RUN pip install uwsgi
+ADD provision/pytnon27.sh /provision.sh
+RUN /provision.sh && rm -f /provision.sh
 RUN a2enmod rewrite
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
