@@ -1,4 +1,5 @@
 FROM ubuntu:14.04
+MAINTAINER david.siaw@mobingi.com
 MAINTAINER sawanoboriyu@higanworks.com
 
 RUN apt-get update
