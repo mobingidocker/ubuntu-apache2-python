@@ -16,6 +16,7 @@ RUN apt-get install -y libapache2-mod-uwsgi build-essential git curl sqlite3 sup
 ENV PYENV_ROOT /opt/pyenv
 ADD provision.sh /provision.sh
 RUN /provision.sh && rm -f /provision.sh
+ENV PATH /opt/pyenv/shims:$PATH
 RUN a2enmod rewrite
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
