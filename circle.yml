@@ -6,7 +6,6 @@ machine:
     - docker
 dependencies:
   pre:
-    - git tag | xargs git tag -d
     - test/clone_samplecode.sh
 test:
   override:
